@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 
 project(simple_gui_template)
 include(gtest.cmake)
@@ -7,28 +7,29 @@ include(gtest.cmake)
 
 #file(GLOB sources "example.cpp")
 #file(GLOB headers "example.h")
-add_executable(simple_gui_template 
-    main.cpp 
+add_executable(simple_gui_template
+    main.cpp
     ${headers}
     ${sources}
-    ) 
+    )
 
 file(GLOB sourcesTests "unit_fixture.cpp")
 file(GLOB headersTests "unit_fixture.h")
-add_executable(tests 
+add_executable(tests
     "unit_tests.cpp"
     ${headers}
-    ${sources} 
-    ${headersTests} 
-    ${sourcesTests} 
+    ${sources}
+    ${headersTests}
+    ${sourcesTests}
+    "sudoku.h"
     )
 
-#target_include_directories(simple_gui_template)   
+#target_include_directories(simple_gui_template)
 
-#target_include_directories(tests)   
+#target_include_directories(tests)
 
 find_package (Threads)
-target_link_libraries(tests gtest ${CMAKE_THREAD_LIBS_INIT})    
+target_link_libraries(tests gtest ${CMAKE_THREAD_LIBS_INIT})
 
 if (MSVC)
     target_compile_options(tests PRIVATE /std:c++14)
